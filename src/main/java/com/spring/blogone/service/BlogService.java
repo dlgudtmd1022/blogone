@@ -1,20 +1,19 @@
-package com.spring.blogone.repository;
+package com.spring.blogone.service;
 
 import com.spring.blogone.entity.Blog;
-import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Mapper
-public interface BlogRepository {
+public interface BlogService {
 
     List<Blog> findAll();
 
     Blog findById(long blogId);
 
-    void save(Blog blog);
-
     void deleteById(long blogId);
+
+    void save (Blog blog);
 
     void update(Blog blog);
 }

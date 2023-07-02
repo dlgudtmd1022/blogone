@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
-public class BlogTest {
+public class BlogRepositoryTest {
 
     @Autowired
     BlogRepository blogRepository;
@@ -40,7 +40,7 @@ public class BlogTest {
     public void findByIdTest() {
         long blogId = 2;
 
-        Blog result = blogRepository.findByID(blogId);
+        Blog result = blogRepository.findById(blogId);
 
         assertEquals("2번유저", result.getWriter());
     }
@@ -62,7 +62,7 @@ public class BlogTest {
 
         blogRepository.save(blog);
 
-        Blog result = blogRepository.findByID(blogId);
+        Blog result = blogRepository.findById(blogId);
         List<Blog> blogList = blogRepository.findAll();
 
 //        assertEquals(writer,result.getWriter());
@@ -97,7 +97,7 @@ public class BlogTest {
 
         blogRepository.update(blog);
         List<Blog> result = blogRepository.findAll();
-        Blog list = blogRepository.findByID(blogId);
+        Blog list = blogRepository.findById(blogId);
         assertEquals(3,result.size());
         assertEquals(title,list.getBlogTitle());
     }

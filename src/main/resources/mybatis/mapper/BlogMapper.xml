@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+<!--xml파일에는 SQL구문만 따로 작성하기 때문에 자바 메서드를 선언할 연동인터페이스를 매칭시켜줍니다.-->
 <mapper namespace="com.spring.blogone.repository.BlogRepository">
 
     <select id="findAll" resultType="com.spring.blogone.entity.Blog">
@@ -16,9 +16,10 @@
             blog_count as blogCount
         FROM
             blog
+        ORDER BY blog_id DESC
     </select>
 
-    <select id="findByID" resultType="com.spring.blogone.entity.Blog">
+    <select id="findById" resultType="com.spring.blogone.entity.Blog">
         SELECT
         blog_id as blogId,
             writer,
@@ -35,14 +36,14 @@
 
     <insert id="save" parameterType="com.spring.blogone.entity.Blog">
         INSERT INTO
-            blog(writer, blog_title, blog_content)
+            blog (writer, blog_title, blog_content)
         VALUES
             (#{writer}, #{blogTitle}, #{blogContent})
     </insert>
 
-    <delete id="deleteById" parameterType="com.spring.blogone.entity.Blog">
+    <delete id="deleteById" parameterType="long">
         DELETE FROM
-                   blog
+            blog
         WHERE
             blog_id = #{blogId}
     </delete>
