@@ -16,5 +16,4 @@ public class Blog {
     private LocalDateTime publishedAt;
     private LocalDateTime updatedAt;
     private long blogCount;
-
 }
