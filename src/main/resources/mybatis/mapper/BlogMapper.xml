@@ -5,6 +5,7 @@
 <!--xml파일에는 SQL구문만 따로 작성하기 때문에 자바 메서드를 선언할 연동인터페이스를 매칭시켜줍니다.-->
 <mapper namespace="com.spring.blogone.repository.BlogRepository">
 
+    <!--    리턴타입이 entity등의 클래스로 구성된 경우 패키지명부터 적어준다-->
     <select id="findAll" resultType="com.spring.blogone.entity.Blog">
         SELECT
             blog_id as blogId,
@@ -19,9 +20,10 @@
         ORDER BY blog_id DESC
     </select>
 
+    <!--    위의 select 태그를 참조해 방금 만든 findeById를 연결해주시고, 리턴자료도 매칭해주세요.-->
     <select id="findById" resultType="com.spring.blogone.entity.Blog">
         SELECT
-        blog_id as blogId,
+            blog_id as blogId,
             writer,
             blog_title as blogTitle,
             blog_content as blogContent,
@@ -33,7 +35,7 @@
         WHERE
             blog_id = #{blogId}
     </select>
-
+    <!--     insert 태그를 이용해서 사전 세팅만 해주세요-->
     <insert id="save" parameterType="com.spring.blogone.entity.Blog">
         INSERT INTO
             blog (writer, blog_title, blog_content)
@@ -41,13 +43,28 @@
             (#{writer}, #{blogTitle}, #{blogContent})
     </insert>
 
-    <delete id="deleteById" parameterType="long">
-        DELETE FROM
+    <delete id="deleteById" parameterType="com.spring.blogone.entity.Blog">
+        DELETE
+        FROM
             blog
         WHERE
             blog_id = #{blogId}
     </delete>
 
+    <!-- 테스트를 위한 쿼리문들 -->
+    <select id="createBlogTable">
+        CREATE TABLE IF NOT EXISTS blog(
+                                           blog_id int auto_increment primary key,
+                                           writer varchar(16) not null,
+                                           blog_title varchar(200) not null,
+                                           blog_content varchar(4000) not null,
+                                           published_at datetime default now(),
+                                           updated_at datetime default now(),
+                                           blog_count int default 0
+        )
+    </select>
+
+    <!--    수정로직 아래에 쿼리문까지 작서해주세요, 바꿔줘야 하는 항모은 제목, 본문 , 업데이트 시작-->
     <update id="update" parameterType="com.spring.blogone.entity.Blog">
         UPDATE
             blog
@@ -56,6 +73,19 @@
             blog_content = #{blogContent},
             updated_at = now()
         WHERE
-            blog_id = #{blogId}
+            blog_id = #{blogId};
     </update>
+
+
+    <update id="dropBlogTable">
+        DROP TABLE blog
+    </update>
+
+    <insert id="insertTestData">
+        INSERT INTO blog VALUES
+                             (null, '1번유저', '1번제목', '1번본문', now(), now(), null),
+                             (null, '2번유저', '2번제목', '2번본문', now(), now(), null),
+                             (null, '3번유저', '3번제목', '3번본문', now(), now(), null)
+    </insert>
+
 </mapper>

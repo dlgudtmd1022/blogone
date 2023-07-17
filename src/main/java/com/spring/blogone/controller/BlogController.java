@@ -45,7 +45,7 @@ public class BlogController {
 
         model.addAttribute("blog", blog);
 
-        return "/blog/detail";
+        return "blog/detail";
     }
 
     @GetMapping("/insert")
@@ -64,17 +64,20 @@ public class BlogController {
         blogService.deleteById(blogId);
         return "redirect:/blog/list";
     }
-
     @PostMapping("/updateform")
     public String update(long blogId, Model model){
         Blog blog = blogService.findById(blogId);
-        model.addAttribute("blog", blog);
+
+        model.addAttribute("blog",blog);
+
         return "blog/blog-update-form";
     }
 
-    @PostMapping("update")
-    public String update(Blog blog){
-            blogService.update(blog);
-        return "redirect:blog/detail" + blog.getBlogId();
+    @PostMapping("/update")
+    public String update(Blog blog) {
+
+        blogService.update(blog);
+
+        return "redirect:/blog/detail/" + blog.getBlogId() ;
     }
 }

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -12,23 +12,24 @@
     <form action="/blog/update" method="POST">
         <div class="row">
             <div class="col-3">
-                <label for="writer" class="form-label">글쓴이</label>
-                <input type="text" class="form-control" id="writer" name="writer" value="${blog.writer}" placeholder="글쓴이를 적어주세요." readonly>
+                <label for="writer" class="form-label">작성자</label>
+                <input type="text" class="form-control" name="writer" id="writer" value="${blog.writer}" readonly>
             </div>
             <div class="col-3">
                 <label for="title" class="form-label">제목</label>
-                <input type="text" class="form-control" id="title" name="blogTitle" value="${blog.blogTitle}" placeholder="제목을 적어주세요.">
+                <input type="text" class="form-control" name="blogTitle" value="${blog.blogTitle}" id="title">
             </div>
         </div>
         <div class="row">
             <div class="col-6">
                 <label for="content" class="form-label">본문</label>
-                <textarea class="form-control" id="content" name= "blogContent" rows="10">${blog.blogContent}</textarea>
+                <textarea class="form-control" id="content" name="blogContent" rows="10">${blog.blogContent}</textarea>
             </div>
         </div>
-        <div class="row">
+        <div class = "row">
             <div class="col-6">
-                <input type = "submit" class="btn btn-primary" value="수정하기">
+                <input type="submit" class="btn btn-primary" value="수정하기">
+                <input type="hidden" name="blogId" value="${blog.blogId}">
             </div>
         </div>
     </form>

@@ -21,7 +21,7 @@
         <tbody>
             <c:forEach var="blog" items="${blogList}">
                 <tr>
-                    <td><a href="/blog/detail">${blog.blogId}</a></td>
+                    <td><a href="/blog/detail/${blog.blogId}">${blog.blogId}</a></td>
                     <td>${blog.blogTitle}</td>
                     <td>${blog.writer}</td>
                     <td>${blog.publishedAt}</td>
