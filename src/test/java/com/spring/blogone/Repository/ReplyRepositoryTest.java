@@ -1,6 +1,8 @@
 package com.spring.blogone.Repository;
 
+import com.spring.blogone.dto.ReplyCreateRequestDTO;
 import com.spring.blogone.dto.ReplyFindByBlogIdDTO;
+import com.spring.blogone.dto.ReplyUpdateDTO;
 import com.spring.blogone.entity.Reply;
 import com.spring.blogone.repository.ReplyRepository;
 import org.junit.jupiter.api.DisplayName;
@@ -66,7 +68,7 @@ public class ReplyRepositoryTest {
         String replyWriter = "개똥벌레";
         String replyContent = "친구가 없네";
 
-        Reply reply =  Reply.builder()
+        ReplyCreateRequestDTO reply =  ReplyCreateRequestDTO.builder()
                 .blogId(blogId)
                 .replyWriter(replyWriter)
                 .replyContent(replyContent)
@@ -85,7 +87,7 @@ public class ReplyRepositoryTest {
         String replyWriter = "개똥벌레";
         String replyContent = "친구가 없네";
 
-        Reply reply =  Reply.builder()
+        ReplyUpdateDTO reply =  ReplyUpdateDTO.builder()
                 .replyId(replyId)
                 .replyWriter(replyWriter)
                 .replyContent(replyContent)
@@ -96,5 +98,7 @@ public class ReplyRepositoryTest {
         assertEquals(replyWriter,replyRepository.findByReplyId(replyId).getReplyWriter());
         assertEquals(replyContent, replyRepository.findByReplyId(replyId).getReplyContent());
     }
+
+
 
 }

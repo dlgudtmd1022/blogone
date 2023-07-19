@@ -7,12 +7,12 @@ import lombok.*;
 @AllArgsConstructor @NoArgsConstructor
 public class ReplyCreateRequestDTO {
 
-    private long replyId;
+    private long blogId;
     private String replyWriter;
     private String replyContent;
 
     public ReplyCreateRequestDTO(Reply reply){
-        this.replyId = reply.getReplyId();
+        this.blogId = reply.getBlogId();
         this.replyWriter = reply.getReplyWriter();
         this.replyContent = reply.getReplyContent();
     }

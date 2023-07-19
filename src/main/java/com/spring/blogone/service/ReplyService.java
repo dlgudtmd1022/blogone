@@ -1,15 +1,13 @@
-package com.spring.blogone.repository;
+package com.spring.blogone.service;
 
 import com.spring.blogone.dto.ReplyCreateRequestDTO;
 import com.spring.blogone.dto.ReplyFindByBlogIdDTO;
 import com.spring.blogone.dto.ReplyUpdateDTO;
-import com.spring.blogone.entity.Reply;
-import org.apache.ibatis.annotations.Mapper;
+
 
 import java.util.List;
 
-@Mapper
-public interface ReplyRepository {
+public interface ReplyService {
 
     List<ReplyFindByBlogIdDTO> findAllByBlogId(long blogId);
 

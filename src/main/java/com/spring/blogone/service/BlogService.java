@@ -1,7 +1,6 @@
 package com.spring.blogone.service;
 
 import com.spring.blogone.entity.Blog;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
