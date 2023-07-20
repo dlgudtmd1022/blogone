@@ -1,9 +1,8 @@
 package com.spring.blogone.Repository;
 
 import com.spring.blogone.dto.ReplyCreateRequestDTO;
-import com.spring.blogone.dto.ReplyFindByBlogIdDTO;
+import com.spring.blogone.dto.ReplyFindByIdDTO;
 import com.spring.blogone.dto.ReplyUpdateDTO;
-import com.spring.blogone.entity.Reply;
 import com.spring.blogone.repository.ReplyRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,7 +28,7 @@ public class ReplyRepositoryTest {
 
         long blogId = 3;
 
-        List<ReplyFindByBlogIdDTO> replyList = replyRepository.findAllByBlogId(blogId);
+        List<ReplyFindByIdDTO> replyList = replyRepository.findAllByBlogId(blogId);
 
         assertEquals(1, replyList.size());
     }
@@ -39,7 +38,7 @@ public class ReplyRepositoryTest {
     @DisplayName("댓글 번호로 하나 찾기")
     public void findByReplyId(){
         long replyId = 2;
-        ReplyFindByBlogIdDTO reply = replyRepository.findByReplyId(replyId);
+        ReplyFindByIdDTO reply = replyRepository.findByReplyId(replyId);
 
         assertEquals("짹짹이", reply.getReplyWriter());
         assertEquals("짹짹쨲쨲쨲쨰꺠ㅉ꺠ㅉㄲㅉ꺢", reply.getReplyContent());
@@ -53,7 +52,7 @@ public class ReplyRepositoryTest {
     long blogId = 2;
 
     replyRepository.deleteByReplyId(replyId);
-    List<ReplyFindByBlogIdDTO> result = replyRepository.findAllByBlogId(blogId);
+    List<ReplyFindByIdDTO> result = replyRepository.findAllByBlogId(blogId);
 
     assertEquals(3, result.size());
     assertEquals("댓글쓴사람", result.get(0).getReplyWriter());

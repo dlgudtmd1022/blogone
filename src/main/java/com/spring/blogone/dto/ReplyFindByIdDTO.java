@@ -7,14 +7,14 @@ import java.time.LocalDateTime;
 
 @Getter@Setter@ToString
 @AllArgsConstructor@NoArgsConstructor@Builder
-public class ReplyFindByBlogIdDTO {
+public class ReplyFindByIdDTO {
     private long replyId;
     private String replyWriter;
     private String replyContent;
     private LocalDateTime publishedAt;
     private LocalDateTime updatedAt;
 
-    public ReplyFindByBlogIdDTO(Reply reply){
+    public ReplyFindByIdDTO(Reply reply){
         this.replyId = reply.getReplyId();
         this.replyWriter = reply.getReplyWriter();
         this.replyContent = reply.getReplyContent();

@@ -1,7 +1,7 @@
 package com.spring.blogone.Service;
 
 import com.spring.blogone.dto.ReplyCreateRequestDTO;
-import com.spring.blogone.dto.ReplyFindByBlogIdDTO;
+import com.spring.blogone.dto.ReplyFindByIdDTO;
 import com.spring.blogone.dto.ReplyUpdateDTO;
 import com.spring.blogone.service.ReplyService;
 import org.junit.jupiter.api.DisplayName;
@@ -25,7 +25,7 @@ public class ReplyServiceTest {
     public void findAllByBlogIdTest(){
         long blogId = 2;
 
-        List<ReplyFindByBlogIdDTO> result = replyService.findAllByBlogId(blogId);
+        List<ReplyFindByIdDTO> result = replyService.findAllByBlogId(blogId);
 
         assertEquals(4, result.size());
     }
@@ -36,7 +36,7 @@ public class ReplyServiceTest {
     public void findByReplyId(){
         long replyId = 2;
 
-        ReplyFindByBlogIdDTO result = replyService.findByReplyId(replyId);
+        ReplyFindByIdDTO result = replyService.findByReplyId(replyId);
 
         assertEquals("짹짹이", result.getReplyWriter());
     }
@@ -86,7 +86,7 @@ public class ReplyServiceTest {
                 .build();
 
         replyService.update(result);
-        ReplyFindByBlogIdDTO reply = replyService.findByReplyId(replyId);
+        ReplyFindByIdDTO reply = replyService.findByReplyId(replyId);
         assertEquals(writer, reply.getReplyWriter());
     }
 }

@@ -1,7 +1,7 @@
 package com.spring.blogone.service;
 
 import com.spring.blogone.dto.ReplyCreateRequestDTO;
-import com.spring.blogone.dto.ReplyFindByBlogIdDTO;
+import com.spring.blogone.dto.ReplyFindByIdDTO;
 import com.spring.blogone.dto.ReplyUpdateDTO;
 import com.spring.blogone.repository.ReplyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +19,12 @@ public class ReplyServiceImpl implements ReplyService {
         this.replyRepository = replyRepository;
     }
     @Override
-    public List<ReplyFindByBlogIdDTO> findAllByBlogId(long blogId) {
+    public List<ReplyFindByIdDTO> findAllByBlogId(long blogId) {
         return replyRepository.findAllByBlogId(blogId);
     }
 
     @Override
-    public ReplyFindByBlogIdDTO findByReplyId(long replyId) {
+    public ReplyFindByIdDTO findByReplyId(long replyId) {
         return replyRepository.findByReplyId(replyId);
     }
 

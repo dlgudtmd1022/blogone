@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.blogone.repository.ReplyRepository">
 
-    <select id="findAllByBlogId" resultType="com.spring.blogone.dto.ReplyFindByBlogIdDTO">
+    <select id="findAllByBlogId" resultType="com.spring.blogone.dto.ReplyFindByIdDTO">
         SELECT
             reply_id as replyId,
             reply_writer as replyWriter,
@@ -17,7 +17,7 @@
             blog_id = #{blogId}
     </select>
 
-    <select id="findByReplyId" resultType="com.spring.blogone.dto.ReplyFindByBlogIdDTO">
+    <select id="findByReplyId" resultType="com.spring.blogone.dto.ReplyFindByIdDTO">
         SELECT
             reply_id as replyId,
             reply_writer as replyWriter,

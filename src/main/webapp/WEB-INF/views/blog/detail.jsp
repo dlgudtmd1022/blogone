@@ -107,6 +107,17 @@
 
         </div>
     </div>
+    <div class="row">
+        <div class="col-1">
+            <input type="text" class="form-control" id="replyWriter" name="replyWriter">
+        </div>
+        <div class="col-6">
+            <input type="text" class="form-control" id="replyContent" name="replyContent">
+        </div>
+        <div class="col-1">
+            <button class="btn btn-primary" id="replySubmit">댓글쓰기</button>
+        </div>
+    </div>
 </div>
 <script>
     let blogId = "${blog.blogId}"
@@ -139,6 +150,39 @@
             });
     }
     getAllReplies(blogId);
+
+    function insertReply(){
+        let url = `http://localhost:8080/reply`; // /reply와 동일
+
+        if(document.getElementById("replyWriter").value.trim() === ""){
+            alert("글쓴이를 채워주셔야 합니다.")
+            return;
+        }
+        if(document.getElementById("replyContent").value.trim() === ""){
+            alert("본문를 채워주셔야 합니다.")
+            return;
+        }
+        fetch(url, {
+            method:'post',
+            headers: {
+                "Content-Type" : "application/json",
+            },
+            body: JSON.stringify({
+                replyWriter : document.getElementById("replyWriter").value,
+                replyContent : document.getElementById("replyContent").value,
+                blogId : "${blog.blogId}"
+            }),
+        }).then(() => {
+            document.getElementById("replyWriter").value = "";
+            document.getElementById("replyContent").value = "";
+            alert("댓글 작성 완료 짝짝짝");
+            getAllReplies(blogId);
+        });
+    }
+
+    $replySubmit = document.getElementById("replySubmit");
+
+    $replySubmit.addEventListener("click", insertReply);
 
 </script>
 
