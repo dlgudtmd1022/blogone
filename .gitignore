@@ -36,5 +36,7 @@ out/
 ### VS Code ###
 .vscode/
 
-## yml ##
+### profiles ###
 application-db.yml
+src/main/resources/application-db.yml
+
