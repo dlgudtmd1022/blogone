@@ -1,4 +1,4 @@
-url: jdbc:mysql://127.0.0.1:3306/dynamic_blog_test
+url: jdbc:mysql://127.0.0.1:3306/dynamic_blog_dev
 username_: root
 password: mysql
 driver-class-name: com.mysql.cj.jdbc.Driver

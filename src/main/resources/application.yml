@@ -3,7 +3,7 @@ spring:
     active: db
   mvc:
     view:
-      suffix: jsp
+      suffix: .jsp
       prefix: /WEB-INF/views/
     static-path-pattern: /resources/**
   datasource:
