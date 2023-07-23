@@ -11,6 +11,13 @@ spring:
     username: ${username_}
     password: ${password}
     driver-class-name: ${driver-class-name}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
 
 mybatis:
   mapper-locations: classpath:mybatis/mapper/**/**.xml

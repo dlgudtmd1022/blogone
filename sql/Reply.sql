@@ -20,3 +20,8 @@ INSERT INTO reply VALUES
                       (null, 2, "바둑이", "멍멍멍멍머엄엄엄어멍머어멍~~~~", now(), now()),
                       (null, 2, "야옹이", "고양이가 어떻게 댓글을 씀?", now(), now()),
                       (null, 3, "개발고수", "아 REST써버 개쉽당", now(), now());
+                      
+select
+	*
+From
+	blog;
