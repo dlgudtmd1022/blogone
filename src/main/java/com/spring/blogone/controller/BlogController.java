@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("/blog")
 public class BlogController {
 
-    private  BlogService blogService;
+    private final BlogService blogService;
 
     @Autowired
     public BlogController(BlogService blogService){
@@ -25,8 +25,8 @@ public class BlogController {
     }
 
     @GetMapping("/list")
-    public String list(Model model){
-        List<Blog> blogList = blogService.findAll();
+    public String list(Model model, long pageNum){
+        List<Blog> blogList = blogService.findAll(pageNum);
         model.addAttribute("blogList", blogList);
         return "blog/list";
     }
@@ -77,7 +77,6 @@ public class BlogController {
     public String update(Blog blog) {
 
         blogService.update(blog);
-
         return "redirect:/blog/detail/" + blog.getBlogId() ;
     }
 }

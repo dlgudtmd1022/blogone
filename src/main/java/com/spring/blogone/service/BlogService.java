@@ -1,12 +1,13 @@
 package com.spring.blogone.service;
 
 import com.spring.blogone.entity.Blog;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
 public interface BlogService {
 
-    List<Blog> findAll();
+    Page<Blog> findAll(Long pageNum);
 
     Blog findById(long blogId);
 

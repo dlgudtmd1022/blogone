@@ -1,7 +1,6 @@
 package com.spring.blogone.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -12,9 +11,13 @@ import java.time.LocalDateTime;
 public class Blog {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long blogId;
+    @Column(nullable = false)
     private String writer;
+    @Column(nullable = false)
     private String blogTitle;
+    @Column(nullable = false)
     private String blogContent;
 
     private LocalDateTime publishedAt;

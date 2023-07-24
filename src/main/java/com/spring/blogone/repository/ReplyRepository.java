@@ -12,11 +12,13 @@ public interface ReplyRepository {
 
     List<ReplyFindByIdDTO> findAllByBlogId(long blogId);
 
-    ReplyFindByIdDTO findByReplyId(long replyId);
+    ReplyFindByIdDTO findById(long replyId);
 
-    void deleteByReplyId(long replyId);
+    void deleteById(long replyId);
 
     void save(ReplyCreateRequestDTO replyCreateRequestDTO);
 
     void update(ReplyUpdateDTO replyUpdateDTO);
+
+    void deleteByBlogId(long blogId);
 }
