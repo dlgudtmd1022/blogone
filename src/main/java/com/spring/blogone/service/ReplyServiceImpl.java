@@ -35,7 +35,6 @@ public class  ReplyServiceImpl implements ReplyService {
     @Override
     public void deleteByReplyId(long replyId) {
 
-        blog
         replyJPARepository.deleteById(replyId);
     }
 

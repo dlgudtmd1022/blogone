@@ -2,6 +2,7 @@ package com.spring.blogone.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.time.LocalDateTime;
 
@@ -21,6 +22,21 @@ public class Blog {
     private String blogContent;
 
     private LocalDateTime publishedAt;
+
     private LocalDateTime updatedAt;
-    private long blogCount;
+
+    @ColumnDefault("0")
+    private Long blogCount;
+
+    @PrePersist
+    public void setDefaultValue(){
+        this.blogCount = this.blogCount == null ? 0 : this.blogCount;
+        this.publishedAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void setUpdateValue(){
+        this.updatedAt = LocalDateTime.now();
+    }
 }

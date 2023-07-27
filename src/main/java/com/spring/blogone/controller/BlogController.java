@@ -4,6 +4,7 @@ import com.spring.blogone.entity.Blog;
 import com.spring.blogone.exception.NotFoundBlogIdException;
 import com.spring.blogone.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,9 +25,10 @@ public class BlogController {
         this.blogService = blogService;
     }
 
-    @GetMapping("/list")
-    public String list(Model model, long pageNum){
-        List<Blog> blogList = blogService.findAll(pageNum);
+    @GetMapping("/list/{pageNum}")
+    public String list(Model model,@PathVariable Long pageNum){
+
+        Page<Blog> blogList = blogService.findAll(pageNum);
         model.addAttribute("blogList", blogList);
         return "blog/list";
     }

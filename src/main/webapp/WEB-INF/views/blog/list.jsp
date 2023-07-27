@@ -19,7 +19,7 @@
             <td>조회수</td>
         </thead>
         <tbody>
-            <c:forEach var="blog" items="${blogList}">
+            <c:forEach var="blog" items="${blogList.toList()}">
                 <tr>
                     <td><a href="/blog/detail/${blog.blogId}">${blog.blogId}</a></td>
                     <td>${blog.blogTitle}</td>
